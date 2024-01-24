@@ -23,6 +23,7 @@ public class AdapterRunner implements CommandLineRunner {
         UserData userData = new UserData();
         userData.getData(infoAdapter);
 
+        System.out.println("****************************************** ADAPTER **********************************");
         System.out.println(userData.getNomeCompleto());
         System.out.println(userData.getEta());
     }
