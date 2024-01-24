@@ -8,17 +8,22 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
-public class Libro {
+public class Libro extends Prodotto{
+    private String titolo;
     private double prezzo;
-    private List<Autore> autoreList = new ArrayList<>();
-    private List<Prodotto> sezioni = new ArrayList<>();
+    private List<String> autori;
+    private List<Sezione> capitoli;
+
+    @Override
     public void print() {
-        System.out.println("Libro: ");
-        for(Prodotto prodotto : sezioni){
-            prodotto.print();
-        }
+        System.out.println("Titolo Libro: " + this.getTitolo());
+        this.capitoli.forEach(Sezione::print);
+    }
+
+    @Override
+    public int getNumPagine() {
+        return this.capitoli.stream().mapToInt(Sezione::getNumPagine).sum();
     }
 }
+

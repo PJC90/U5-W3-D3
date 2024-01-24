@@ -4,22 +4,23 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-@Getter
-@Setter
+
 @AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Sezione implements Prodotto{
+public class Sezione extends Prodotto{
     private String titoloSezione;
-    private List<Prodotto> sezioni = new ArrayList<>();
+    private List<Prodotto> componenti;
 
 
     @Override
     public void print() {
-        System.out.println("Sezione: " + sezioni);
-        for(Prodotto prodotto : sezioni){
-            prodotto.print();
+        System.out.println(this.titoloSezione.toUpperCase());
+        this.componenti.forEach(Prodotto::print);
         }
+
+
+    @Override
+    public int getNumPagine() {
+        return this.componenti.stream().mapToInt(Prodotto::getNumPagine).sum();
     }
 
 

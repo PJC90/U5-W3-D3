@@ -1,21 +1,26 @@
 package pierpaolo.colasante.U5W3D3.compositePattern;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@ToString
-public class Pagina implements Prodotto{
+public class Pagina extends Prodotto{
     private int numeroPagina;
-    private double prezzo = 10;
+    @Getter
+    private String contenuto;
 
-    public Pagina(int numeroPagina) {
-        this.numeroPagina = numeroPagina;
-    }
+
 
     @Override
     public void print() {
-        System.out.println("Pagina numero: " + numeroPagina);
+        System.out.println("Pagina numero: " + this.numeroPagina);
+        System.out.println(this.contenuto);
+    }
+
+    @Override
+    public int getNumPagine() {
+        return 1;
     }
 
 
